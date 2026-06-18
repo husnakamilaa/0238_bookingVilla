@@ -1,17 +1,5 @@
 # booking_villa
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+| **Splash Screen** | **Login** | **Register** | 
+|:----------------------:|:----------------------:|:----------------------:|
+|<img width="300" alt="image" src="https://github.com/user-attachments/assets/f406fd6c-178a-4a0c-a275-3713055c7dd2" />|<img width="300" alt="image" src="https://github.com/user-attachments/assets/09641ac8-cac6-4ec1-bc3d-8bb5575cf08a" />|<img width="300" alt="image" src="https://github.com/user-attachments/assets/b36e2ab5-6b7d-4a52-bb60-11f39b3a766e" />|
