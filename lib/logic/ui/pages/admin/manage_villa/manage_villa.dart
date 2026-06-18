@@ -1,3 +1,4 @@
+import 'package:booking_villa/logic/ui/components/custom_card.dart';
 import 'package:booking_villa/logic/ui/components/search_bar.dart';
 import 'package:booking_villa/logic/ui/pages/admin/manage_villa/detailVilla.dart';
 import 'package:flutter/material.dart';
@@ -123,97 +124,31 @@ class _ManageVillaPageState extends State<ManageVillaPage> {
 
   Widget _buildVillaCard(VillaModel villa) {
     bool isAvailable = villa.statusAvailable == 'available';
-    return InkWell(
-      borderRadius: BorderRadius.circular(20),
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (_) => DetailVillaScreen(villa: villa)),
-        );
-      },
-      child: Container(
-        margin: const EdgeInsets.only(bottom: 15),
-        padding: const EdgeInsets.all(12),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(20),
-          boxShadow: [
-            BoxShadow(color: Colors.black.withOpacity(0.03), blurRadius: 10),
-          ],
-        ),
-        child: Row(
-          children: [
-            Container(
-              width: 80,
-              height: 80,
-              decoration: BoxDecoration(
-                color: AppColors.lightblue,
-                borderRadius: BorderRadius.circular(15),
-              ),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(15),
-                child:
-                    (villa
-                        .image
-                        .isNotEmpty) 
-                    ? Image.network(
-                        villa.image,
-                        fit: BoxFit.cover,
-                        errorBuilder: (context, error, stackTrace) {
-                          return const Icon(
-                            Icons.broken_image,
-                            color: AppColors.navy,
-                          );
-                        },
-                      )
-                    : const Icon(
-                        Icons.image,
-                        color: AppColors.navy,
-                      ), 
-              ),
-            ),
-            const SizedBox(width: 15),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    villa.namaVilla,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16,
-                    ),
-                  ),
-                  Text(
-                    "Rp ${villa.price}",
-                    style: const TextStyle(color: AppColors.grey, fontSize: 13),
-                  ),
-                  const SizedBox(height: 5),
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 8,
-                      vertical: 2,
-                    ),
-                    decoration: BoxDecoration(
-                      color: (isAvailable ? Colors.green : Colors.red)
-                          .withOpacity(0.1),
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                    child: Text(
-                      villa.statusAvailable,
-                      style: TextStyle(
-                        color: isAvailable ? Colors.green : Colors.red,
-                        fontSize: 10,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
+    return CustomCard(
+    imageUrl: villa.image,
+    title: villa.namaVilla,
+    subtitle: "Rp ${villa.price}",
+    badge: Container(
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+      decoration: BoxDecoration(
+        color: (isAvailable ? Colors.green : Colors.red).withOpacity(0.1),
+        borderRadius: BorderRadius.circular(5),
+      ),
+      child: Text(
+        villa.statusAvailable,
+        style: TextStyle(
+          color: isAvailable ? Colors.green : Colors.red,
+          fontSize: 10,
+          fontWeight: FontWeight.bold,
         ),
       ),
-    );
+    ),
+    onTap: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (_) => DetailVillaScreen(villa: villa)),
+      );
+    },
+  );
   }
 }
