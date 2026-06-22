@@ -34,6 +34,7 @@ Aplikasi ini terbagi ke dalam beberapa modul utama yang melayani fungsionalitas 
 - **Pembayaran (Payment):** Halaman pemrosesan pembayaran dan konfirmasi.
 - **Invoice:** Penerbitan nota/tagihan otomatis setelah pembayaran berhasil (sinkronisasi UI/warna berdasarkan status pembayaran).
 - **Riwayat Pesanan:** Melacak status dan riwayat pemesanan yang pernah dilakukan.
+- **Cart:** Menyimpan villa yang disukai di halaman ini.
 
 ### Modul Admin
 - **Dashboard Admin:** Dasbor berisi ringkasan statistik pemesanan (pendapatan, jumlah pesanan) secara dinamis.
@@ -74,3 +75,4 @@ Berikut adalah rincian progres mingguan untuk pengembangan aplikasi Booking Vill
 * **Minggu 6: Integrasi Penuh & Bug Fixing**
   - Menghubungkan seluruh modul Customer dengan *dashboard* Manajemen Booking milik Admin.
   - Melakukan *testing* UI dan perbaikan *bug* (*error handling* pada form).
+  - Menambahkan fitur baru *cart* untuk menyimpan villa yang disukai
