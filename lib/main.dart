@@ -1,11 +1,13 @@
 import 'package:booking_villa/data/models/villa.dart';
 import 'package:booking_villa/data/repositories/auth_repository.dart';
 import 'package:booking_villa/data/repositories/booking_repository.dart';
+import 'package:booking_villa/data/repositories/cart_repository.dart';
 import 'package:booking_villa/data/repositories/profiles_repository.dart';
 import 'package:booking_villa/data/repositories/stats_repository.dart';
 import 'package:booking_villa/data/repositories/villa_repository.dart';
 import 'package:booking_villa/logic/bloc/auth/auth_bloc.dart';
 import 'package:booking_villa/logic/bloc/booking/booking_bloc.dart';
+import 'package:booking_villa/logic/bloc/cart/cart_bloc.dart';
 import 'package:booking_villa/logic/bloc/profiles/profiles_bloc.dart';
 import 'package:booking_villa/logic/bloc/profiles/profiles_event.dart';
 import 'package:booking_villa/logic/bloc/stats/stats_bloc.dart';
@@ -48,6 +50,7 @@ class MyApp extends StatelessWidget {
         RepositoryProvider(create: (_) => ProfileRepository()),
         RepositoryProvider(create: (_) => BookingRepository()),
         RepositoryProvider(create: (_) => AdminStatsRepository()),
+        RepositoryProvider(create: (_) => CartRepository()),
       ],
       child: MultiBlocProvider(
         providers: [
@@ -55,7 +58,8 @@ class MyApp extends StatelessWidget {
             create: (context) => AuthBloc(context.read<AuthRepository>()),
           ),
           BlocProvider(
-            create: (context) => VillaBloc(repository: VillaRepository()),
+            // create: (context) => VillaBloc(repository: VillaRepository()),
+            create: (context) => VillaBloc(repository: context.read<VillaRepository>()),
           ),
           BlocProvider(
             create: (context) =>
@@ -66,10 +70,12 @@ class MyApp extends StatelessWidget {
             create: (context) => BookingBloc(context.read<BookingRepository>()),
           ),
           BlocProvider(
-            // <-- fix ini
             create: (context) =>
                 AdminStatsBloc(context.read<AdminStatsRepository>()),
           ),
+          BlocProvider(
+          create: (context) => CartBloc(repository: context.read<CartRepository>()), 
+        ),
         ],
         child: MaterialApp(
           title: 'Booking Villa',
